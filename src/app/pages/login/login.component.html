@@ -1,0 +1,42 @@
+<div class="login-wrap">
+  <div class="form-wrap">
+    <div class="logo-img">
+      <img alt="logo" src="assets/images/logo.png"/>
+    </div>
+    <mat-card>
+      <mat-card-title class="text-center mb-4">LOGIN</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="loginForm" novalidate>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-icon matSuffix class="secondary-text">email</mat-icon>
+            <mat-error *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+              Email is required and should be valid
+            </mat-error>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+
+            <mat-error *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+
+          <div class="row justify-content-end">
+            <button mat-raised-button color="accent" class="mt-4" (click)="login()" aria-label="LOG IN"
+              [disabled]="loginForm.invalid">
+              Login
+            </button>
+            <mat-spinner *ngIf="loading" [diameter]="35"></mat-spinner>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

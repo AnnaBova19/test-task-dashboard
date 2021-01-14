@@ -1,0 +1,35 @@
+.login-wrap {
+  background-image: linear-gradient(45deg, rgb(176, 255, 2) 0%, rgb(255, 0, 90) 100%);
+  background-size: 100%;
+  background-position: right top, left 10% bottom, 100% center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.form-wrap {
+  margin: auto;
+  max-width: 600px;
+  padding: 24px 24px 72px;
+  .mat-card {
+    padding: 25px;
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+.logo-img {
+  width: 200px;
+  height: 135px;
+  margin: 0 auto 24px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}

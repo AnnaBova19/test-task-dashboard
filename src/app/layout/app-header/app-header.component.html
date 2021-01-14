@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <div class="header-wrap">
+    <div class="menu">
+      <span class="brand">Deeper Signals</span>
+      <div class="menu">
+        <div *ngFor="let menu of menuList">
+          <a [routerLink]="menu['link']" routerLinkActive="active-link">{{ menu['label'] }}</a>
+        </div>
+      </div>
+    </div>
+    <button mat-button (click)="logout()" aria-label="LOG OUT">
+      Logout
+    </button>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,19 @@
+<h2>Assessment Reports</h2>
+<div v-if="assessments && assessments.length > 0" class="row justify-content-around align-items-center">
+  <div *ngFor="let report of assessments; let i = index">
+    <mat-card class="report-card">
+      <mat-card-header>
+        <mat-card-title>{{report.name}}</mat-card-title>
+        <mat-card-subtitle>{{report.active ? 'Active' : 'Not Active'}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="report.image_url">
+      <mat-card-content class="row justify-content-end">
+        <button mat-stroked-button color="primary" (click)="showReport(report, i)">
+          Show Graph >>
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
