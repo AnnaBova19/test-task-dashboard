@@ -11,16 +11,32 @@ export class GraphDialogComponent implements OnInit {
   @Input() dataSource: Object = {};
 
   title: string = '';
+  graphType: string = '';
   graphData: Object = {};
   graphColors: string[] = [];
-
   canvas: any;
   ctx: any;
+
+  constructor(
+    public dialogRef: MatDialogRef<GraphDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.title = data.title;
+    this.graphData = data.graph.data;
+    this.graphType = data.graph.type;
+    while (this.graphColors.length < Object.keys(this.graphData).length) {
+      this.graphColors.push(`rgb(${this.rand(0, 255)}, ${this.rand(0, 255)}, ${this.rand(0, 255)})`);
+    }
+  }
+
+  ngOnInit(): void {
+  }
+
   ngAfterViewInit() {
     this.canvas = document.getElementById('myChart');
     this.ctx = this.canvas.getContext('2d');
     let myChart = new Chart(this.ctx, {
-      type: 'bar',
+      type: this.graphType,
       data: {
         labels: Object.keys(this.graphData),
         datasets: [{
@@ -31,7 +47,7 @@ export class GraphDialogComponent implements OnInit {
         }]
       },
       options: {
-        responsive: false,
+        responsive: true,
         scales: {
           xAxes: [{
               stacked: true
@@ -44,22 +60,8 @@ export class GraphDialogComponent implements OnInit {
     });
   }
 
-  constructor(
-    public dialogRef: MatDialogRef<GraphDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    this.title = data.title;
-    this.graphData = data.graph.data;
-    while (this.graphColors.length < Object.keys(this.graphData).length) {
-      this.graphColors.push(`rgb(${this.rand(0, 255)}, ${this.rand(0, 255)}, ${this.rand(0, 255)})`);
-    }
-  }
-
-  ngOnInit(): void {
-  }
-
-  rand(frm, to) {
-    return ~~(Math.random() * (to - frm)) + frm;
+  rand(from, to) {
+    return ~~(Math.random() * (to - from)) + from;
   }
 
   closeDialog() {

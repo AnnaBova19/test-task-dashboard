@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  showReport(report, index): void {
+  showReport(report): void {
     this.userAssessmentsService.getUserAssessmentReport(report.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe(data => {

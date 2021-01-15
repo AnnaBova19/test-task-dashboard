@@ -4,8 +4,12 @@ import { CommonModule } from '@angular/common';
 
 import { UsersComponent } from './users.component';
 import { UsersService } from '../../core/services/users/users.service';
+import { SharedService } from '../../core/services/shared/shared.service';
 
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Routes = [
   { path: '', component: UsersComponent }
@@ -19,9 +23,12 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
 
-    MatTableModule    
+    MatTableModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   exports: [ RouterModule ],
-  providers: [ UsersService ],
+  providers: [ UsersService, SharedService ],
 })
 export class UsersModule { }

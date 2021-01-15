@@ -13,7 +13,7 @@ export class UserAssessmentsService {
 
   constructor(private http: HttpClient) { }
 
-  getUserAssessments() {
+  getUserAssessments(): Observable<Assessment[]> {
     return this.http.get<Assessment[]>(`${this.baseUrl}/userassessments`);
   }
 

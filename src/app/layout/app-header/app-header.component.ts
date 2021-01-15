@@ -17,11 +17,13 @@ export class AppHeaderComponent implements OnInit {
     this.menuList = [
       {
         link: '/dashboard',
-        label: 'Dashboard'
+        label: 'Dashboard',
+        hidden: false
       },
       {
         link: '/users',
-        label: 'Users'
+        label: 'Users',
+        hidden: this.authService.currentUserValue.role === 'User'
       },
     ];
   }

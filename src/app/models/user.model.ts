@@ -3,6 +3,7 @@ export class User {
   first_name: string;
   last_name: string;
   role: string;
+  token: string;
 
   /**
    * Constructor
@@ -15,6 +16,7 @@ export class User {
       this.first_name = user.first_name || '';
       this.last_name = user.last_name || '';
       this.role = user.role || '';
+      this.token = user.token || '';
     }
   }
 }

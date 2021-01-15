@@ -13,7 +13,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers() {
+  getUsers(): Observable<AdminUser[]> {
     return this.http.get<AdminUser[]>(`${this.baseUrl}/users`);
   }
 }
