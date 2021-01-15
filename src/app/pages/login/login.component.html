@@ -38,5 +38,10 @@
         </form>
       </mat-card-content>
     </mat-card>
+    <div class="row justify-content-end mt-2 privacy-terms">
+      <a *ngFor="let menu of menuList" [href]="menu['link']" target="_blank">
+        {{ menu['label'] }}
+      </a>
+    </div>
   </div>
 </div>

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loading: boolean = false;
   error: string = '';
   destroy$: Subject<any> = new Subject();
+  menuList: any;
 
   constructor(
     private authService: AuthService,
@@ -28,7 +29,21 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForm = new FormGroup({
       "email": new FormControl("", [Validators.required, Validators.email]),
       "password": new FormControl("", Validators.required) 
-    });    
+    });   
+    this.menuList = [
+      {
+        link: 'https://www.deepersignals.com/privacy-policy',
+        label: 'Privacy'
+      },
+      {
+        link: 'https://www.deepersignals.com/terms-of-use',
+        label: 'Terms'
+      },
+      {
+        link: 'https://deepersignals.zendesk.com/hc/en-us',
+        label: 'Help'
+      },
+    ]; 
   }
 
   ngOnInit(): void {

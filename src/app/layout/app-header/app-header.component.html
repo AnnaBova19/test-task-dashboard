@@ -4,7 +4,9 @@
       <span class="brand">Deeper Signals</span>
       <div class="menu">
         <div *ngFor="let menu of menuList" [hidden]="menu['hidden']">
-          <a [routerLink]="menu['link']" routerLinkActive="active-link">{{ menu['label'] }}</a>
+          <a [routerLink]="menu['link']" routerLinkActive="active-link">
+            {{ menu['label'] }}
+          </a>
         </div>
       </div>
     </div>
